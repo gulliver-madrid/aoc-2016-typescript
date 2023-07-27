@@ -1,10 +1,5 @@
-import fs from 'fs';
+import { readLines } from '../helpers';
 
-
-function readLines(filePath: string): string[] {
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
-    return fileContent.split('\n');
-}
 
 const N = 'N'
 const S = 'S'
