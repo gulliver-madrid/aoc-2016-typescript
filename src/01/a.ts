@@ -11,78 +11,54 @@ const S = 'S'
 const W = 'W'
 const E = 'E'
 
+const toRight = {
+    N: E,
+    E: S,
+    S: W,
+    W: N
+}
+const toLeft = {
+    N: W,
+    E: N,
+    S: E,
+    W: S
+}
+
 const solve = (line: string) => {
     let pos = [0, 0]
     let dir = N
     let commands = line.split(', ');
     for (const command of commands) {
         const letter = command[0]
-        let new_dir: string
         if (letter === 'R') {
-            switch (dir) {
-                case N:
-                    new_dir = E
-                    break;
-                case E:
-                    new_dir = S
-                    break;
-                case S:
-                    new_dir = W
-                    break;
-                case W:
-                    new_dir = N
-                    break;
-                default: {
-                    throw new Error(dir)
-                }
-            }
+            dir = toRight[dir]
         } else if (letter === 'L') {
-            switch (dir) {
-                case N:
-                    new_dir = W
-                    break;
-                case E:
-                    new_dir = N
-                    break;
-                case S:
-                    new_dir = E
-                    break;
-                case W:
-                    new_dir = S
-                    break;
-                default: {
-                    throw new Error(dir)
-                }
-            }
+            dir = toLeft[dir]
         } else {
             throw new Error(dir)
         }
 
-        dir = new_dir
-
         const stepsStr = command.substring(1) // Remove first character
         const steps = parseInt(stepsStr)
 
-        let new_pos: number[]
         const [x, y] = pos
         switch (dir) {
             case N:
-                new_pos = [x, y - steps]
+                pos = [x, y - steps]
                 break;
             case E:
-                new_pos = [x + steps, y]
+                pos = [x + steps, y]
                 break;
             case S:
-                new_pos = [x, y + steps]
+                pos = [x, y + steps]
                 break;
             case W:
-                new_pos = [x - steps, y]
+                pos = [x - steps, y]
                 break;
             default: {
                 throw new Error(dir)
             }
         }
-        pos = new_pos
 
     }
     return Math.abs(pos[0]) + Math.abs(pos[1])
