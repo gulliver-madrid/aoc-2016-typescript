@@ -4,9 +4,24 @@
   "author": "gulliver-madrid",
   "version": "1.0.0",
   "license": "GPL-3.0-only",
+  "directories": {
+    "test": "tests"
+  },
   "keywords": [
     "typescript",
     "advent-of-code",
     "aoc"
-  ]
+  ],
+  "scripts": {
+    "test": "npx jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.3",
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/parser": "^6.2.0",
+    "eslint": "^8.45.0",
+    "jest": "^29.6.2",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.1.6"
+  }
 }
