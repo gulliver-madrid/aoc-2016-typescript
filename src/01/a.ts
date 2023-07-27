@@ -41,25 +41,25 @@ const solve = (line: string) => {
         const stepsStr = command.substring(1) // Remove first character
         const steps = parseInt(stepsStr)
 
-        const [x, y] = pos
+        let [x, y] = pos
         switch (dir) {
             case N:
-                pos = [x, y - steps]
+                y -= steps
                 break;
             case E:
-                pos = [x + steps, y]
+                x += steps
                 break;
             case S:
-                pos = [x, y + steps]
+                y += steps
                 break;
             case W:
-                pos = [x - steps, y]
+                x -= steps
                 break;
             default: {
                 throw new Error(dir)
             }
         }
-
+        pos = [x, y]
     }
     return Math.abs(pos[0]) + Math.abs(pos[1])
 }
