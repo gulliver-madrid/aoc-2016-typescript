@@ -1,23 +1,6 @@
 import { readLines } from '../helpers';
+import { toRight, toLeft, N, E, S, W } from './shared';
 
-
-const N = 'N'
-const S = 'S'
-const W = 'W'
-const E = 'E'
-
-const toRight = {
-    N: E,
-    E: S,
-    S: W,
-    W: N
-}
-const toLeft = {
-    N: W,
-    E: N,
-    S: E,
-    W: S
-}
 
 const solve = (line: string) => {
     let pos = [0, 0]

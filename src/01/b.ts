@@ -1,29 +1,11 @@
 import assert from 'assert/strict'
 import { readLines } from '../helpers';
+import { toRight, toLeft, N, E, S, W } from './shared';
 
-
-const N = 'N'
-const S = 'S'
-const W = 'W'
-const E = 'E'
-
-const toRight = {
-    N: E,
-    E: S,
-    S: W,
-    W: N
-}
-const toLeft = {
-    N: W,
-    E: N,
-    S: E,
-    W: S
-}
-
-const solve = (s: string) => {
+const solve = (line: string) => {
     let pos = [0, 0]
     let dir = N
-    let commands = s.split(', ');
+    let commands = line.split(', ');
     const visited: string[] = []
     let found = false
     for (const command of commands) {
@@ -36,11 +18,11 @@ const solve = (s: string) => {
             throw new Error(dir.toString())
         }
 
-        const numStr = command.substring(1) // Remove first character
-        const num = parseInt(numStr)
+        const stepsStr = command.substring(1) // Remove first character
+        const steps = parseInt(stepsStr)
 
         let [x, y] = pos
-        for (let i = 0; i < num; i++) {
+        for (let i = 0; i < steps; i++) {
             switch (dir) {
                 case N:
                     y -= 1
@@ -60,12 +42,12 @@ const solve = (s: string) => {
             }
 
             pos = [x, y]
-            s = JSON.stringify(pos)
-            if (visited.includes(s)) {
+            const posStr = JSON.stringify(pos)
+            if (visited.includes(posStr)) {
                 found = true
                 break
             }
-            visited.push(s)
+            visited.push(posStr)
         }
         if (found) {
             break
