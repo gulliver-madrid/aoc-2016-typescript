@@ -1,0 +1,12 @@
+{
+  "name": "aoc-typescript-2016",
+  "description": "[Advent Of Code 2016](https://adventofcode.com/2016) solutions in TypeScript.",
+  "author": "gulliver-madrid",
+  "version": "1.0.0",
+  "license": "GPL-3.0-only",
+  "keywords": [
+    "typescript",
+    "advent-of-code",
+    "aoc"
+  ]
+}
