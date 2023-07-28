@@ -1,4 +1,4 @@
-import { readLines } from "../helpers";
+import { clamp, readLines } from "../helpers";
 
 const keypad = `
     0 0 1 0 0
@@ -33,8 +33,8 @@ const solve = (s: string[]) => {
                     new_x -= 1
                     break
             }
-            new_x = new_x < 0 ? 0 : new_x > 4 ? 4 : new_x
-            new_y = new_y < 0 ? 0 : new_y > 4 ? 4 : new_y
+            new_x = clamp(new_x, 0, 4)
+            new_y = clamp(new_y, 0, 4)
             if (keypad[new_y][new_x] !== '0') {
                 x = new_x
                 y = new_y

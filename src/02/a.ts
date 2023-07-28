@@ -1,4 +1,4 @@
-import { readLines } from "../helpers";
+import { clamp, readLines } from "../helpers";
 
 const keypad = [
     [1, 2, 3],
@@ -28,8 +28,8 @@ const solve = (s: string[]) => {
                     x -= 1
                     break
             }
-            x = x < 0 ? 0 : x > 2 ? 2 : x
-            y = y < 0 ? 0 : y > 2 ? 2 : y
+            x = clamp(x, 0, 2)
+            y = clamp(y, 0, 2)
         }
         comb += (keypad[y][x])
     }

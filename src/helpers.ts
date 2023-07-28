@@ -5,4 +5,6 @@ function readLines(filePath: string): string[] {
     return fileContent.split('\n');
 }
 
-export { readLines }
+const clamp = (x: number, a: number, b: number) => Math.max(a, Math.min(x, b))
+
+export { readLines, clamp }
